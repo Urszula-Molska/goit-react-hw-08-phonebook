@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 /*const initialContacts = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -8,23 +8,22 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 ];*/
 
 const getContactsFromLocalhost = () => {
-  const parsedContacts = JSON.parse(localStorage.getItem("contacts"));
+  const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
   if (parsedContacts instanceof Array) {
     const initialState = parsedContacts;
-    console.log(initialState.length);
     return initialState;
   }
   return;
 };
 
 export const contactsSlice = createSlice({
-  name: "contacts",
+  name: 'contacts',
   initialState: getContactsFromLocalhost,
   reducers: {
     addContact: {
       reducer(state, action) {
         state.push(action.payload);
-        localStorage.setItem("contacts", JSON.stringify(state));
+        localStorage.setItem('contacts', JSON.stringify(state));
       },
       prepare(name, number) {
         return {
@@ -38,14 +37,14 @@ export const contactsSlice = createSlice({
     },
 
     deleteContact(state, action) {
-      const index = state.findIndex((contact) => contact.id === action.payload);
+      const index = state.findIndex(contact => contact.id === action.payload);
       state.splice(index, 1);
-      localStorage.setItem("contacts", JSON.stringify(state));
+      localStorage.setItem('contacts', JSON.stringify(state));
     },
   },
 });
 
-export const getContacts = (state) => state.contacts;
+export const getContacts = state => state.contacts;
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
