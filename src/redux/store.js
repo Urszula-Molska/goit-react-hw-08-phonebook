@@ -6,9 +6,9 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 
 const persistConfig = {
-  key: 'changeContacts',
+  key: 'contactss',
   storage,
-  whitelist: ['changeContacts'],
+  whitelist: ['contactss'],
 };
 
 const reducer = combineReducers({

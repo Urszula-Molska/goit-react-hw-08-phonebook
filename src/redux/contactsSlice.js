@@ -1,5 +1,4 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import changeContactsReducer from '../redux/stateReducer.js';
 
 const initialState = [];
 /*{ id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -21,7 +20,6 @@ export const contactsSlice = createSlice({
     addContact: {
       reducer(state, action) {
         state.push(action.payload);
-        changeContactsReducer(state, action);
       },
       prepare(name, number) {
         return {
@@ -37,7 +35,6 @@ export const contactsSlice = createSlice({
     deleteContact(state, action) {
       const index = state.findIndex(contact => contact.id === action.payload);
       state.splice(index, 1);
-      changeContactsReducer(state, action);
     },
   },
 });
