@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 const persistConfig = {
   key: 'contacts',
   storage,
-  whitelist: ['contactss'],
+  whitelist: ['contacts'],
 };
 
 const reducer = combineReducers({
