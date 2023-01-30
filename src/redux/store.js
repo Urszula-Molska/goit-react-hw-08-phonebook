@@ -4,9 +4,10 @@ import { filterReducer } from './filterSlice';
 import { contactsReducer } from './contactsSlice';
 import { combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
+import thunk from 'redux-thunk';
 
 const persistConfig = {
-  key: 'contactss',
+  key: 'contacts',
   storage,
   whitelist: ['contactss'],
 };
@@ -21,6 +22,7 @@ export const store = configureStore({
   reducer: {
     contacts: persistedReducer,
     filter: filterReducer,
+    middleware: [thunk],
   },
 });
 export const persistor = persistStore(store);
