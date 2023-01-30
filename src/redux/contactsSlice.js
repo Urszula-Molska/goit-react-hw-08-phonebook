@@ -1,29 +1,27 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import changeContactsReducer from '../redux/stateReducer.js';
 
-/*const initialContacts = [
-  { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
+const initialState = [];
+/*{ id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
   { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
   { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-  { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-];*/
-
-const getContactsFromLocalhost = () => {
+  { id: "id-4", name: "Annie Copeland", number: "227-91-26" },*/ /*const getContactsFromLocalhost = () => {
   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
   if (parsedContacts instanceof Array) {
     const initialState = parsedContacts;
     return initialState;
   }
   return;
-};
+};*/
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: getContactsFromLocalhost,
+  initialState /*: getContactsFromLocalhost*/,
   reducers: {
     addContact: {
       reducer(state, action) {
         state.push(action.payload);
-        localStorage.setItem('contacts', JSON.stringify(state));
+        changeContactsReducer(state, action);
       },
       prepare(name, number) {
         return {
@@ -39,7 +37,7 @@ export const contactsSlice = createSlice({
     deleteContact(state, action) {
       const index = state.findIndex(contact => contact.id === action.payload);
       state.splice(index, 1);
-      localStorage.setItem('contacts', JSON.stringify(state));
+      changeContactsReducer(state, action);
     },
   },
 });

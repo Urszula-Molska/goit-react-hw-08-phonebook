@@ -1,9 +1,9 @@
-import React from "react";
-import { ContactForm } from "./features/contacts/components/ContactForm/ContactForm";
-import { Section } from "./components/Section/Section";
-import { Filter } from "./features/filter/components/Filter/Filter";
-import { ContactList } from "./features/contacts/components/ContactList/ContactList";
-import "./index.css";
+import React from 'react';
+import { ContactForm } from './components/ContactForm/ContactForm';
+import { Section } from './components/Section/Section';
+import { Filter } from './components/Filter/Filter';
+import { ContactList } from './components/ContactList/ContactList';
+import './index.css';
 
 function App() {
   return (

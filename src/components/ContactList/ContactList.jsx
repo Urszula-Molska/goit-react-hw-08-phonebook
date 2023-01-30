@@ -1,17 +1,16 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { deleteContact } from "../../contactsSlice.js";
-import { getContacts } from "../../contactsSlice.js";
-import { getFilter } from "../../../filter/filterSlice.js";
-
-import css from "./ContactList.module.css";
-import PropTypes from "prop-types";
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { deleteContact } from '../../redux/contactsSlice.js';
+import { getContacts } from '../../redux/contactsSlice.js';
+import { getFilter } from '../../redux/filterSlice.js';
+import css from './ContactList.module.css';
+import PropTypes from 'prop-types';
 
 const getVisibleContacts = (filter, contacts) => {
   if (filter.length === 0) {
     return contacts;
   } else {
-    return contacts.filter((contact) =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
   }
@@ -27,7 +26,7 @@ export const ContactList = () => {
   return (
     <>
       <ul className={css.contactList}>
-        {visibleContacts.map((contact) => (
+        {visibleContacts.map(contact => (
           <li className={css.listItem} key={contact.id} data-id={contact.id}>
             <span className={css.contactInfo}>
               {contact.name}: {contact.number}

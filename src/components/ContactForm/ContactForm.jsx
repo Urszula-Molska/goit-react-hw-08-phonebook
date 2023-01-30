@@ -1,15 +1,15 @@
-import { useDispatch } from "react-redux";
-import { addContact } from "../../contactsSlice.js";
-import { getContacts } from "../../contactsSlice.js";
-import { useSelector } from "react-redux";
-import css from "./ContactForm.module.css";
-import PropTypes from "prop-types";
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsSlice.js';
+import { getContacts } from '../../redux/contactsSlice.js';
+import { useSelector } from 'react-redux';
+import css from './ContactForm.module.css';
+import PropTypes from 'prop-types';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
     const name = form.elements.name;
@@ -17,7 +17,7 @@ export const ContactForm = () => {
 
     if (
       contacts.find(
-        (contact) =>
+        contact =>
           contact.name.toLowerCase().trim() === name.value.toLowerCase().trim()
       )
     ) {

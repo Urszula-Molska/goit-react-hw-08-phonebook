@@ -1,12 +1,12 @@
-import { useDispatch } from "react-redux";
-import { addFilter } from "../../filterSlice.js";
-import css from "./Filter.module.css";
-import PropTypes from "prop-types";
+import { useDispatch } from 'react-redux';
+import { addFilter } from '../../redux/filterSlice.js';
+import css from './Filter.module.css';
+import PropTypes from 'prop-types';
 
 export const Filter = () => {
   const dispatch = useDispatch();
 
-  const setFilter = (event) => {
+  const setFilter = event => {
     const filter = event.target.value.toLowerCase().trim();
     dispatch(addFilter(filter));
   };
