@@ -4,7 +4,7 @@ const initialState = [];
 
 export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState /*: getContactsFromLocalhost*/,
+  initialState,
   reducers: {
     addContact: {
       reducer(state, action) {
