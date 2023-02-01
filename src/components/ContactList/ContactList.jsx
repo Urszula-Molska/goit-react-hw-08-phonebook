@@ -4,7 +4,6 @@ import { deleteContact } from '../../redux/contactsSlice.js';
 import { getContacts } from '../../redux/selectors.js';
 import { getFilter } from '../../redux/selectors.js';
 import css from './ContactList.module.css';
-import PropTypes from 'prop-types';
 
 const getVisibleContacts = (filter, contacts) => {
   if (filter.length === 0) {
@@ -47,9 +46,4 @@ export const ContactList = () => {
       </ul>
     </>
   );
-};
-
-ContactList.propTypes = {
-  contactList: PropTypes.array,
-  removeContact: PropTypes.func,
 };

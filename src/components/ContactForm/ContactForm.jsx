@@ -3,7 +3,6 @@ import { addContact } from '../../redux/contactsSlice.js';
 import { getContacts } from '../../redux/selectors.js';
 import { useSelector } from 'react-redux';
 import css from './ContactForm.module.css';
-import PropTypes from 'prop-types';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -55,8 +54,4 @@ export const ContactForm = () => {
       </form>
     </div>
   );
-};
-
-ContactForm.propTypes = {
-  formSubmit: PropTypes.func,
 };
