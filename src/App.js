@@ -9,11 +9,11 @@ function App() {
   return (
     <div className="App">
       <Section>
-        <a href="https://urszula-molska.github.io/goit-react-hw-06-phonebook/">
-          https://urszula-molska.github.io/goit-react-hw-06-phonebook
+        <a href="https://urszula-molska.github.io/goit-react-hw-07-phonebook/">
+          https://urszula-molska.github.io/goit-react-hw-07-phonebook
         </a>
-        <a href="https://github.com/Urszula-Molska/goit-react-hw-06-phonebook">
-          https://github.com/Urszula-Molska/goit-react-hw-06-phonebook
+        <a href="https://github.com/Urszula-Molska/goit-react-hw-07-phonebook">
+          https://github.com/Urszula-Molska/goit-react-hw-07-phonebook
         </a>
       </Section>
       <Section title="Phonebook">
