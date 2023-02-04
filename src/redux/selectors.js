@@ -2,7 +2,7 @@ export const getContacts = state => {
   if (state === undefined) {
     return;
   }
-  return state.contacts;
+  return state.contacts.contacts;
 };
 
 export const getFilter = state => {
@@ -11,3 +11,5 @@ export const getFilter = state => {
   }
   return state.filter;
 };
+
+export const getError = state => state.error;

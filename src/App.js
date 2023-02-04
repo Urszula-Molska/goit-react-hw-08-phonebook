@@ -1,11 +1,19 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { Section } from './components/Section/Section';
 import { Filter } from './components/Filter/Filter';
 import { ContactList } from './components/ContactList/ContactList';
 import './index.css';
 
-function App() {
+export const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Section>
@@ -25,6 +33,4 @@ function App() {
       </Section>
     </div>
   );
-}
-
-export default App;
+};

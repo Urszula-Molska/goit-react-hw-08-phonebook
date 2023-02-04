@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice.js';
+import { deleteContact } from 'redux/operations';
 import { getContacts } from '../../redux/selectors.js';
 import { getFilter } from '../../redux/selectors.js';
 import css from './ContactList.module.css';
@@ -28,7 +28,7 @@ export const ContactList = () => {
         {visibleContacts.map(contact => (
           <li className={css.listItem} key={contact.id} data-id={contact.id}>
             <span className={css.contactInfo}>
-              {contact.name}: {contact.number}
+              {contact.name}: {contact.phone}
             </span>
             <button
               data-id={contact.id}
