@@ -1,0 +1,34 @@
+import { createSlice } from '@reduxjs/toolkit';
+import { register, logIn } from './operations';
+
+const handleRejected = (state, action) => {
+  state.error = action.payload;
+};
+
+const initialState = {
+  user: { name: null, email: null },
+  token: null,
+  isLoggedIn: false,
+  isRefreshing: false,
+  error: null,
+};
+
+const authSlice = createSlice({
+  name: 'auth',
+  initialState,
+  extraReducers: {
+    [register.fulfilled](state, action) {
+      state.user = action.payload.user;
+      console.log(action.payload);
+      console.log(action.payload.user);
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+  },
+});
+export const authReducer = authSlice.reducer;
