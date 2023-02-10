@@ -9,18 +9,26 @@ import { ContactForm } from './components/ContactForm/ContactForm';
 import { Home } from './components/Home/Home';
 import { Register } from './components/Register/Register';
 import { Login } from './components/Login/Login';
+import { AuthNav } from './components/AuthNav/AuthNav';
+import { UserMenu } from './components/userMenu/UserMenu';
 import { Section } from './components/Section/Section';
+import { Contacts } from './components/Contacts/Contacts';
 import { Filter } from './components/Filter/Filter';
 import { ContactList } from './components/ContactList/ContactList';
+import { refreshUser } from 'redux/auth/operations';
 import './index.css';
 
 export const App = () => {
+  const { isRefreshing, isLoggedIn } = useAuth();
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <div className="App">
       <Section>
         <a href="https://urszula-molska.github.io/goit-react-hw-08-phonebook/">
@@ -31,16 +39,16 @@ export const App = () => {
         </a>
       </Section>
       <header>
-        <nav>
+        <nav className="wrapper">
           <NavLink className="navLink" to="/" end>
             Home
           </NavLink>
-          <NavLink className="navLink" to="/register">
-            Register
-          </NavLink>
-          <NavLink className="navLink" to="/login">
-            Login
-          </NavLink>
+          {isLoggedIn && (
+            <NavLink className="contactsLink" to="/contacts">
+              contacts
+            </NavLink>
+          )}
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </nav>
       </header>
       <Suspense fallback={<div>Loading...</div>}>
@@ -48,7 +56,7 @@ export const App = () => {
           <Route path="/" element={<Home />}>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/contacts" /*element={<Contacts />}*/ />
+            <Route path="/contacts" element={<Contacts />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

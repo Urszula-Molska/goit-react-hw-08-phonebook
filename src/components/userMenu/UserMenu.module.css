@@ -1,0 +1,12 @@
+.username {
+  font-weight: 700;
+  text-align: center;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.logoutBtn {
+  display: flex;
+}

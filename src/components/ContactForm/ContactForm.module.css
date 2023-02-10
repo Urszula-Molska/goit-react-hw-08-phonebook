@@ -1,5 +1,4 @@
 input,
-button,
 label {
   width: 200px;
   margin-bottom: 10px;
@@ -13,4 +12,5 @@ form {
 .addContactBtn {
   margin-top: 15px;
   padding: 5px;
+  margin-bottom: 10px;
 }

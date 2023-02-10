@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
 }
 
 code {
@@ -25,6 +26,7 @@ code {
   text-decoration: none;
   color: black;
   font-weight: 500;
+  margin-bottom: 4px;
 }
 
 .navLink.active {
@@ -33,15 +35,31 @@ code {
 }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 16px;
   border-bottom: 1px solid black;
 }
 
-header.nav {
+.wrapper {
   display: flex;
+  justify-content: space-between;
+}
+
+p,
+ul,
+li {
+  margin: 0px;
+  padding: 0px;
+}
+
+.contactsLink {
+  margin-right: 400px;
+  padding: 8px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.contactsLink.active {
+  color: rgb(255, 255, 255);
+  background-color: #882268;
 }
