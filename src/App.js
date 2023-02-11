@@ -2,12 +2,10 @@ import React from 'react';
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth.js';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from 'components/PrivateRoute.js';
 import { RestrictedRoute } from 'components/RestrictedRoute.js';
-import { AuthNav } from './components/AuthNav/AuthNav';
-import { UserMenu } from './components/userMenu/UserMenu';
-import { Section } from './components/Section/Section';
+import { Section } from './components/Section/Section.jsx';
 import { refreshUser } from 'redux/auth/operations';
 import './index.css';
 
@@ -17,7 +15,7 @@ const LoginPage = lazy(() => import('./pages/Login/Login.jsx'));
 const ContactsPage = lazy(() => import('./pages/Contacts/Contacts.jsx'));
 
 export const App = () => {
-  const { isRefreshing, isLoggedIn } = useAuth();
+  const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,22 +34,6 @@ export const App = () => {
           https://github.com/Urszula-Molska/goit-react-hw-08-phonebook
         </a>
       </Section>
-      <header>
-        <nav className="wrapper">
-          <NavLink className="navLink" to="/goit-react-hw-08-phonebook">
-            Home
-          </NavLink>
-          {isLoggedIn && (
-            <NavLink
-              className="contactsLink"
-              to="/goit-react-hw-08-phonebook/phonebook"
-            >
-              contacts
-            </NavLink>
-          )}
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
-        </nav>
-      </header>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/goit-react-hw-08-phonebook" element={<HomePage />}>
