@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { getContacts } from '../../redux/selectors.js';
 import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import css from './ContactForm.module.css';
 
 export const ContactForm = () => {
@@ -22,13 +23,19 @@ export const ContactForm = () => {
     ) {
       return alert(`${name.value} is already in contacts`);
     } else {
-      dispatch(addContact({ name: name.value, phone: number.value }));
+      const contact = {
+        name: name.value,
+        number: number.value,
+        id: nanoid(),
+      };
+
+      dispatch(addContact(contact));
       form.reset();
     }
   };
 
   return (
-    <div>
+    <div className={css.wrapper}>
       <form onSubmit={handleSubmit}>
         <label>Name</label>
         <input
