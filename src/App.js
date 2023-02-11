@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth.js';
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
+import { PrivateRoute } from 'components/PrivateRoute.js';
+import { RestrictedRoute } from 'components/RestrictedRoute.js';
 import { lazy, Suspense } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { ContactForm } from './components/ContactForm/ContactForm';
@@ -54,11 +56,28 @@ export const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />}>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/contacts" element={<Contacts />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<Register />}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute redirectTo="/login" component={<Contacts />} />
+              }
+            />
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Suspense>
     </div>

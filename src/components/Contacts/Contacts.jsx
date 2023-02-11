@@ -9,12 +9,7 @@ import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth.js';
 
 export const Contacts = () => {
-  const { isRefreshing, isLoggedIn } = useAuth();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchContacts());
