@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './operations';
 
-const handleRejected = (state, action) => {
-  state.error = action.payload;
-};
-
 const initialState = {
   user: { name: null, email: null },
   token: null,
