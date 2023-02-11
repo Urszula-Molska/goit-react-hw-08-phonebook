@@ -5,8 +5,6 @@ import { Section } from '../Section/Section';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
 import { fetchContacts } from 'redux/operations';
-import { refreshUser } from 'redux/auth/operations';
-import { useAuth } from 'hooks/useAuth.js';
 
 export const Contacts = () => {
   const dispatch = useDispatch();
