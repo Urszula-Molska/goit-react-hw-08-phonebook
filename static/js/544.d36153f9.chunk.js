@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkurszula_molska_goit_react_hw_08_phonebook=self.webpackChunkurszula_molska_goit_react_hw_08_phonebook||[]).push([[544],{9544:function(e,n,s){s.r(n);var l=s(7689),o=s(2791),a=s(7111),u=s(3329);n.default=function(){return(0,u.jsx)(u.Fragment,{children:(0,u.jsxs)("main",{children:[(0,u.jsx)(a.$,{title:"Phonebook"}),(0,u.jsx)(o.Suspense,{fallback:null,children:(0,u.jsx)(l.j3,{})})]})})}}}]);
-//# sourceMappingURL=544.d36153f9.chunk.js.map
