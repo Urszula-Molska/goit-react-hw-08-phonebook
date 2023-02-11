@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import css from './Login.module.css';
 
-export const Login = () => {
+const Login = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -33,3 +33,4 @@ export const Login = () => {
     </div>
   );
 };
+export default Login;

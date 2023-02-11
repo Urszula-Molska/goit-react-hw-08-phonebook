@@ -1,20 +1,20 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth.js';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import { PrivateRoute } from 'components/PrivateRoute.js';
 import { RestrictedRoute } from 'components/RestrictedRoute.js';
-import { Suspense } from 'react';
-import { Home } from './components/Home/Home';
-import { Register } from './components/Register/Register';
-import { Login } from './components/Login/Login';
 import { AuthNav } from './components/AuthNav/AuthNav';
 import { UserMenu } from './components/userMenu/UserMenu';
 import { Section } from './components/Section/Section';
-import { Contacts } from './components/Contacts/Contacts';
 import { refreshUser } from 'redux/auth/operations';
 import './index.css';
+
+const HomePage = lazy(() => import('./pages/Home/Home.jsx'));
+const RegisterPage = lazy(() => import('./pages/Register/Register.jsx'));
+const LoginPage = lazy(() => import('./pages/Login/Login.jsx'));
+const ContactsPage = lazy(() => import('./pages/Contacts/Contacts.jsx'));
 
 export const App = () => {
   const { isRefreshing, isLoggedIn } = useAuth();
@@ -38,11 +38,14 @@ export const App = () => {
       </Section>
       <header>
         <nav className="wrapper">
-          <NavLink className="navLink" to="/" end>
+          <NavLink className="navLink" to="/goit-react-hw-08-phonebook">
             Home
           </NavLink>
           {isLoggedIn && (
-            <NavLink className="contactsLink" to="/contacts">
+            <NavLink
+              className="contactsLink"
+              to="/goit-react-hw-08-phonebook/phonebook"
+            >
               contacts
             </NavLink>
           )}
@@ -51,26 +54,32 @@ export const App = () => {
       </header>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<Home />}>
+          <Route path="/goit-react-hw-08-phonebook" element={<HomePage />}>
             <Route
-              path="/register"
+              path="/goit-react-hw-08-phonebook/register"
               element={
                 <RestrictedRoute
-                  redirectTo="/contacts"
-                  component={<Register />}
+                  redirectTo="/goit-react-hw-08-phonebook/phonebook"
+                  component={<RegisterPage />}
                 />
               }
             />
             <Route
-              path="/login"
+              path="/goit-react-hw-08-phonebook/login"
               element={
-                <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+                <RestrictedRoute
+                  redirectTo="/goit-react-hw-08-phonebook/phonebook"
+                  component={<LoginPage />}
+                />
               }
             />
             <Route
-              path="/contacts"
+              path="/goit-react-hw-08-phonebook/phonebook"
               element={
-                <PrivateRoute redirectTo="/login" component={<Contacts />} />
+                <PrivateRoute
+                  redirectTo="/goit-react-hw-08-phonebook/login"
+                  component={<ContactsPage />}
+                />
               }
             />
           </Route>

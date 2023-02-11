@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { filterReducer } from './filterSlice';
-import { contactsReducer } from './contactsSlice';
+import { contactsReducer } from './contacts/contactsSlice';
 import { authReducer } from './auth/slice';
 import {
   persistStore,
