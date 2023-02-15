@@ -8,14 +8,11 @@ export const Navigation = () => {
   return (
     <header>
       <nav className="wrapper">
-        <NavLink className="navLink" to="/goit-react-hw-08-phonebook">
+        <NavLink className="navLink" to="/">
           Home
         </NavLink>
         {isLoggedIn && (
-          <NavLink
-            className="contactsLink"
-            to="/goit-react-hw-08-phonebook/phonebook"
-          >
+          <NavLink className="contactsLink" to="/phonebook">
             contacts
           </NavLink>
         )}
