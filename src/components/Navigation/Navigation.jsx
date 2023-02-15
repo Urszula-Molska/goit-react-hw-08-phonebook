@@ -19,6 +19,7 @@ export const Navigation = () => {
             contacts
           </NavLink>
         )}
+
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </nav>
     </header>

@@ -3,8 +3,8 @@ import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth.js';
 import { Routes, Route } from 'react-router-dom';
-import { PrivateRoute } from 'components/PrivateRoute.js';
-import { RestrictedRoute } from 'components/RestrictedRoute.js';
+import { PrivateRoute } from 'pages/PrivateRoute.js';
+import { RestrictedRoute } from 'pages/RestrictedRoute.js';
 import { Section } from './components/Section/Section.jsx';
 import { refreshUser } from 'redux/auth/operations';
 import './index.css';
@@ -36,30 +36,30 @@ export const App = () => {
       </Section>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/goit-react-hw-08-phonebook" element={<HomePage />}>
+          <Route path="/" element={<HomePage />}>
             <Route
-              path="/goit-react-hw-08-phonebook/register"
+              path="/register"
               element={
                 <RestrictedRoute
-                  redirectTo="/goit-react-hw-08-phonebook/phonebook"
+                  redirectTo="/phonebook"
                   component={<RegisterPage />}
                 />
               }
             />
             <Route
-              path="/goit-react-hw-08-phonebook/login"
+              path="/login"
               element={
                 <RestrictedRoute
-                  redirectTo="/goit-react-hw-08-phonebook/phonebook"
+                  redirectTo="/phonebook"
                   component={<LoginPage />}
                 />
               }
             />
             <Route
-              path="/goit-react-hw-08-phonebook/phonebook"
+              path="/phonebook"
               element={
                 <PrivateRoute
-                  redirectTo="/goit-react-hw-08-phonebook/login"
+                  redirectTo="/login"
                   component={<ContactsPage />}
                 />
               }
@@ -70,12 +70,3 @@ export const App = () => {
     </div>
   );
 };
-
-/*<Section title="Phonebook">
-        <ContactForm />
-      </Section>
-      <Filter />
-      <Section title="Contacts">
-        <ContactList />
-      </Section>
-    </div>*/

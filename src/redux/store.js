@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { filterReducer } from './filterSlice';
+import { filterReducer } from './Filter/filterSlice';
 import { contactsReducer } from './contacts/contactsSlice';
 import { authReducer } from './auth/slice';
 import {
